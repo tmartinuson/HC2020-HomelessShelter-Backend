@@ -6,7 +6,7 @@ class ShelterAlreadyExistsError(Exception):
     pass
 
 
-class AccountNotFoundError(Exception):
+class ShelterNotFoundError(Exception):
     pass
 
 
@@ -31,7 +31,7 @@ class ShelterData(Base):
         shelter = self.session.query(Shelter).filter(
             Shelter.name == name).first()
         if not shelter:
-            raise AccountNotFoundError()
+            raise ShelterNotFoundError()
         
         shelter = self.session.query(Shelter).filter(Shelter.name == name).first()
         return shelter
