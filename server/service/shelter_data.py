@@ -35,3 +35,10 @@ class ShelterData(Base):
         
         shelter = self.session.query(Shelter).filter(Shelter.name == name).first()
         return shelter
+
+    def update(self, name, num_beds):
+        shelter = self.get(name)
+        shelter.num_beds = num_beds
+
+    def get_list(self):
+        return self.session.query(Shelter).all()
