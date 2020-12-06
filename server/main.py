@@ -1,8 +1,15 @@
 import sys
 
+from sqlalchemy import create_engine
+from sqlalchemy.exc import OperationalError
+
+from server.model.base import Base
+from server.service.session import Session
+
+DATABASE = 'sqlite:////tmp/foobar.db'
 
 def main():
-    engine = create_engine(db)
+    engine = create_engine(DATABASE)
     Session.configure(bind=engine)
 
     try:
