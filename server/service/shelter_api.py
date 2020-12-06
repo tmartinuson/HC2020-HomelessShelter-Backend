@@ -19,7 +19,10 @@ def add_shelter():
 
 @app.route('/shelter/<name>',  methods=['GET'])
 def fetch_shelter(name):
-    return 'todo'
+    with ShelterData() as data:
+        shelter = data.get(name)
+
+    return 'Shelter information: ' + shelter.to_string()
 
 
 @app.route('/shelter',  methods=['GET'])
