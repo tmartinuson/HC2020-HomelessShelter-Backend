@@ -9,20 +9,48 @@ p{
 }
 
 h1{
-    font-size: 24;
+    font-size: 36px;
     font-weight: bold;
 }
 
 h2{
-    font-size: 20;
+    font-size: 20px;
     font-weight: bold;
 }
 
 h3{
-    font-size: 17;
+    font-size: 17px;
     font-weight: bold;
 }
 
 .nav-bar{
     display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin: 10px;
 }
+
+.logo{
+    flex-grow: 1;
+    margin: 0px 20px 20px 20px;
+    padding: 10px;
+}
+
+.search-tool{
+    flex-grow: 3;
+    margin: 0px 20px 20px 20px;
+    padding: 10px;
+}
+
+.banner{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.banner img{
+    max-width: 100%;
+}
+
