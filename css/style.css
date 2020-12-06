@@ -57,7 +57,9 @@ input[type=search]{
 }
 
 .search-results{
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .shelter-list{
