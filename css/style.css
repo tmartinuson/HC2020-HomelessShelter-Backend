@@ -1,0 +1,28 @@
+body{
+    color: black;
+}
+
+p{
+    font-family: sans-serif;
+    max-width: 100%;
+    font-size: 14px;
+}
+
+h1{
+    font-size: 24;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 20;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 17;
+    font-weight: bold;
+}
+
+.nav-bar{
+    display: flex;
+}
