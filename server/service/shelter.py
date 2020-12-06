@@ -1,8 +1,12 @@
 from server.service.app import app
+from server.service.shelter_data import ShelterData
 
 
 @app.route('/shelter',  methods=['POST'])
 def add_shelter():
+    with ShelterData() as data:
+        data.create('name', 'address', 123, 0, 0)
+
     return 'todo'
 
 

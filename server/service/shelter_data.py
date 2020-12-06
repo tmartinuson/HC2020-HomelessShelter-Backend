@@ -18,7 +18,13 @@ class ShelterData(Base):
         if shelter:
             raise ShelterAlreadyExistsError()
 
-        shelter = Shelter(name, num_beds, address, coordinate_x, coordinate_y)
+        shelter = Shelter()
+        shelter.name = name
+        shelter.address = address
+        shelter.num_beds = num_beds
+        shelter.coordinate_x = coordinate_x
+        shelter.coordinate_y = coordinate_y
+
         self.session.add(shelter)
 
     def get(self, name):
