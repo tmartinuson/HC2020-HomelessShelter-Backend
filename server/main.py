@@ -5,8 +5,9 @@ from sqlalchemy.exc import OperationalError
 
 from server.model.base import Base
 from server.service.session import Session
+from server.service.app import app
 
-DATABASE = 'sqlite:////tmp/foobar.db'
+DATABASE = 'sqlite:///.\\database.db'
 
 def main():
     engine = create_engine(DATABASE)
@@ -19,6 +20,8 @@ def main():
         sys.exit(1)
     else:
         print('Connected to database')
+
+    app.run()
 
 
 if __name__ == '__main__':
