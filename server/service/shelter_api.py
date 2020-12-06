@@ -1,3 +1,4 @@
+from flask import request
 from server.service.app import app
 from server.service.shelter_data import ShelterData
 
@@ -12,7 +13,7 @@ def add_shelter():
 
 @app.route('/shelter/<name>',  methods=['GET'])
 def fetch_shelter(name):
-    return 'todo'
+    return request.form['name'] + ' | number of beds available: ' + request.form['num_beds']
 
 
 @app.route('/shelter',  methods=['GET'])
