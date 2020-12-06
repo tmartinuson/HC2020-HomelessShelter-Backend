@@ -1,6 +1,21 @@
 from server.service.app import app
 
 
-@app.route('/add-shelter')
+@app.route('/shelter',  methods=['POST'])
 def add_shelter():
+    return 'todo'
+
+
+@app.route('/shelter/<name>',  methods=['GET'])
+def fetch_shelter():
+    return 'todo'
+
+
+@app.route('/shelter',  methods=['GET'])
+def fetch_list_shelter():
+    return 'todo'
+
+
+@app.route('/shelter/<name>',  methods=['PUT'])
+def update_shelter(num_beds):
     return 'todo'
