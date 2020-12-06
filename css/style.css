@@ -56,3 +56,23 @@ input[type=search]{
     min-width: 200px;
 }
 
+.search-results{
+    margin: 0 auto;
+}
+
+.shelter-list{
+    display: inline-block;
+}
+
+.shelter{
+    padding: 10px;
+    max-width: 400px;
+    background-color: lightgray;
+    border: solid black 1px;
+    margin: 20px;
+}
+
+.map {
+    display: inline-block;
+}
+
