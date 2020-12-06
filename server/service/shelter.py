@@ -7,7 +7,7 @@ def add_shelter():
 
 
 @app.route('/shelter/<name>',  methods=['GET'])
-def fetch_shelter():
+def fetch_shelter(name):
     return 'todo'
 
 
@@ -17,5 +17,5 @@ def fetch_list_shelter():
 
 
 @app.route('/shelter/<name>',  methods=['PUT'])
-def update_shelter(num_beds):
+def update_shelter(name):
     return 'todo'
