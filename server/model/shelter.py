@@ -8,7 +8,7 @@ class Shelter(Base):
 
     name = Column(String(256), primary_key=True)
     num_beds = Column(Integer, nullable=False)
-    location = Column(String(256), nullable=False)          # Address location
+    address = Column(String(256), nullable=False)           # Address location
     coordinate_x = Column(Float, nullable=False)            # Coordinate x for API stored in float
     coordinate_y = Column(Float, nullable=False)            # Coordinate y for API stored in float
 
