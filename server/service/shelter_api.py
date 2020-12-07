@@ -19,7 +19,7 @@ def add_shelter():
         except ShelterAlreadyExistsError:
             return json.dumps({'error': 'Shelter ' + name + ' already exists'})
 
-    return 'Shelter added, thank you for using this app.'
+    return json.dumps('Shelter ' + name + ' added, thank you for using the app.')
 
 
 @app.route('/shelter/<name>',  methods=['GET'])
