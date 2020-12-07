@@ -71,13 +71,26 @@ input[type=search]{
     display: inline-block;
 }
 
-li{
+.shelter-list > li{
     padding: 10px;
     max-width: 400px;
     background-color: lightgray;
     border: solid black 1px;
     margin: 20px;
 }
+
+.shelter-list > li > ul{
+    padding: 5px;
+}
+
+.shelter-list > li > ul > li:first-child{
+    font-weight: bold;
+}
+
+.shelter-list > li >ul >li{
+    margin: 5px;
+}
+
 
 .map {
     display: inline-block;
