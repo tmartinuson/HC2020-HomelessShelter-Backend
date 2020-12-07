@@ -1,3 +1,5 @@
+import json
+
 from flask import request
 from server.service.app import app
 from server.service.shelter_data import ShelterData
@@ -27,9 +29,21 @@ def fetch_shelter(name):
 
 @app.route('/shelter',  methods=['GET'])
 def fetch_list_shelter():
-    return 'todo'
+    with ShelterData() as data:
+        shelter_list = data.get_list()
+
+    shelter_dicts = []
+    for shelter in shelter_list:
+        shelter_dicts.append(shelter.to_dict())
+
+    return json.dumps(shelter_dicts)
 
 
 @app.route('/shelter/<name>',  methods=['PUT'])
 def update_shelter(name):
-    return 'todo'
+    num_beds = request.form['num_beds']
+
+    with ShelterData() as data:
+        data.update(name, num_beds)
+
+    return 'Shelter updated'

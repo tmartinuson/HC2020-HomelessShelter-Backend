@@ -20,3 +20,6 @@ class Shelter(Base):
     def to_string(self):
         return '{0} {1} {2} {3} {4}'.format(self.name, self.address,
                                             self.coordinate_x, self.coordinate_y, self.num_beds)
+
+    def to_dict(self):
+        return [self.name, self.address, self.coordinate_x, self.coordinate_y, self.num_beds]
