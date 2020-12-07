@@ -64,6 +64,8 @@ function requestShelters() {
 
 function showAllShelters() {
   console.log("it works")
+  const bannerHandle = document.getElementById("banner");
+  bannerHandle.classList.add("banner-disappear")
   const shelterUl = document.getElementById("shelter-list");
   shelterUl.innerHTML = "";
   for (let i = 0; i < shelterList.length; i++) {
@@ -100,8 +102,8 @@ function showAllShelters() {
 
 function showShelter() {
   const searchName = shelterInput.value;
-  const bannerHandle = document.getElementById("banner");
-  bannerHandle.classList.add("banner-disappear")
+  // const bannerHandle = document.getElementById("banner");
+  // bannerHandle.classList.add("banner-disappear")
 
   for (let i = 0; i < shelterList.length; i++) {
 
