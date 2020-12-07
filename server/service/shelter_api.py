@@ -2,7 +2,7 @@ import json
 
 from flask import request
 from server.service.app import app
-from server.service.shelter_data import ShelterData
+from server.service.shelter_data import ShelterData, ShelterAlreadyExistsError
 
 
 @app.route('/shelter',  methods=['POST'])
@@ -14,7 +14,10 @@ def add_shelter():
     num_beds = request.form['num_beds']
 
     with ShelterData() as data:
-        data.create(name, address, num_beds, coordinate_y, coordinate_x)
+        try:
+            data.create(name, address, num_beds, coordinate_y, coordinate_x)
+        except ShelterAlreadyExistsError:
+            return json.dumps({'error': 'Shelter ' + name + ' already exists'})
 
     return 'Shelter added, thank you for using this app.'
 
