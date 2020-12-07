@@ -44,11 +44,11 @@ function requestShelters() {
         shelterList = JSON.parse(this.responseText).map(shelter => {
           return {
               ...shelter,
-              addressline1: shelter.address,
-              addressline2: 'Vancouver, BC',
-              postcode: 'A1A 1A1',
-              phone: '123-456-7890',
-              email: 'shelter@example.com'
+              addressline1: shelter.address_line_1,
+              addressline2: shelter.address_line_2,
+              postcode: shelter.post_code,
+              phone: shelter.phone,
+              email: shelter.email
           }
         });
         showAllShelters();
