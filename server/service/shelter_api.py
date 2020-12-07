@@ -2,7 +2,7 @@ import json
 
 from flask import request
 from server.service.app import app
-from server.service.shelter_data import ShelterData, ShelterAlreadyExistsError
+from server.service.shelter_data import ShelterData, ShelterAlreadyExistsError, ShelterNotFoundError
 
 
 @app.route('/shelter',  methods=['POST'])
@@ -47,6 +47,9 @@ def update_shelter(name):
     num_beds = request.form['num_beds']
 
     with ShelterData() as data:
-        data.update(name, num_beds)
+        try:
+            data.update(name, num_beds)
+        except ShelterNotFoundError:
+            return json.dumps({'error': 'Shelter not found'})
 
     return json.dumps({'message': 'Shelter updated'})
