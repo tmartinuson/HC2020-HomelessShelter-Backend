@@ -1,9 +1,49 @@
-- name: Shelter1
-  address_line_1: Address Line 1
-  address_line_2: Address line 2 (like Vancouver, BC)
-  post_code: A1A 1A1
+- name: Centre Of Hope - Abbotsford Shelter
+  address_line_1: 34081 Gladys Avenue
+  address_line_2: Abbotsford, BC
+  post_code: V2S 2E8
+  phone: (604) 852-9305 ext. 108
+  email:
+  coordinate_x: 49.04358116153484
+  coordinate_y: -122.27848373264327
+  num_beds: 10
+
+- name: Al Mitchell Place
+  address_line_1: 346 Alexander St
+  address_line_2: Vancouver, BC
+  post_code: V6A 1C3
+  phone: (604) 681-9126 ext. 1
+  email: dtshelter@lookoutsociety.ca
+  coordinate_x: 49.283717775016804
+  coordinate_y: -123.09631024001312
+  num_beds: 10
+
+- name: Hornby Street Shelter
+  address_line_1: 1060 Howe Street
+  address_line_2: Vancouver, BC
+  post_code: V6Z 1W8
+  phone: 604-620-9253
+  email: info@communitybuilders.ca
+  coordinate_x: 49.27630967743955
+  coordinate_y: -123.13203950173643
+  num_beds: 10
+
+- name: Triage Shelter
+  address_line_1: 707 Powell St
+  address_line_2: Vancouver, BC
+  post_code: V6A 1H5
+  phone: (604) 254-3700
+  email: jcorcoran@raincityhousing.org
+  coordinate_x: 49.28313954961075
+  coordinate_y: -123.08901103903885
+  num_beds: 10
+
+- name: Yukon Shelter
+  address_line_1: 2088 Yukon St
+  address_line_2: Vancouver, BC
+  post_code: V5Y 4B1
   phone: (123) 456-7890
-  email: a@a.com
-  coordinate_x: 123
-  coordinate_y: 321
+  email: yukon_shelter@lookoutsociety.ca
+  coordinate_x: 49.26699589546928
+  coordinate_y: -123.11243233057306
   num_beds: 10
