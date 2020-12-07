@@ -1,5 +1,5 @@
 
-const shelterList = [
+var shelterList = [
     {
         name: "Shelter 1",
         addressline1: "123 Cordova St",
@@ -34,8 +34,67 @@ const shelterInput = document.getElementById("location-search");
 const resultText = document.getElementById("no-result");
 
 
+function requestShelters() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:5000/shelter', true);
 
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        shelterList = JSON.parse(this.responseText).map(shelter => {
+          return {
+              ...shelter,
+              addressline1: shelter.address,
+              addressline2: 'Vancouver, BC',
+              postcode: 'A1A 1A1',
+              phone: '123-456-7890',
+              email: 'shelter@example.com'
+          }
+        });
+        showAllShelters();
+      } else {
+        console.log('Error connecting to server!');
+      }
+    }
+  };
 
+  xhr.send();
+}
+
+function showAllShelters() {
+    const shelterUl = document.getElementById("shelter-list");
+    shelterUl.innerHTML = "";
+    for (let i = 0; i<shelterList.length; i++) {
+        // create a list of shelter infos - each of which is a list containing the name, address, etc
+        const shelterInfo = document.createElement("li");
+        const shelterInfoList = document.createElement("ul");
+
+        // should create a list of the shelter infomation
+        const shelterNm = document.createElement("li");
+        const shelterAddr1 = document.createElement("li");
+        const shelterAddr2 = document.createElement("li");
+        const shelterPos = document.createElement("li");
+        const shelterPh = document.createElement("li");
+        const shelterEm = document.createElement("li");
+
+        shelterNm.innerText = shelterList[i].name;
+        shelterAddr1.innerText = shelterList[i].addressline1;
+        shelterAddr2.innerText = shelterList[i].addressline2;
+        shelterPos.innerText = shelterList[i].postcode;
+        shelterPh.innerText = shelterList[i].phone;
+        shelterEm.innerText = shelterList[i].email;
+
+        shelterInfoList.appendChild(shelterNm);
+        shelterInfoList.appendChild(shelterAddr1);
+        shelterInfoList.appendChild(shelterAddr2);
+        shelterInfoList.appendChild(shelterPos);
+        shelterInfoList.appendChild(shelterPh);
+        shelterInfoList.appendChild(shelterEm);
+
+        shelterInfo.appendChild(shelterInfoList);
+        shelterUl.appendChild(shelterInfo);
+    }
+}
 
 function showShelter() {
     const searchName = shelterInput.value;
@@ -79,11 +138,8 @@ function showShelter() {
             
         }
     }
-
-
-
-
-
 }
 
 searchBtn.addEventListener("click", showShelter)
+
+requestShelters();
