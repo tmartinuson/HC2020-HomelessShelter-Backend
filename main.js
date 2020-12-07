@@ -1,43 +1,17 @@
 
-var shelterList = [
-  {
-    name: "Shelter 1",
-    addressline1: "123 Cordova St",
-    addressline2: "Vancouver, BC",
-    postcode: "V5N 5K2",
-    phone: "604-563-9298",
-    email: "shelter1@email.com"
-  },
-  {
-    name: "Shelter 2",
-    addressline1: "123 Broadway Ave",
-    addressline2: "Vancouver, BC",
-    postcode: "V2N 5K4",
-    phone: "604-563-9298",
-    email: "shelter2@email.com"
-
-  },
-
-  {
-    name: "Shelter 3",
-    addressline1: "123 Broadway Ave",
-    addressline2: "Vancouver, BC",
-    postcode: "V5N 5K2",
-    phone: "604-563-9298",
-    email: "shelter3@email.com"
-
-  }
-
-];
+var shelterList = [];
+var geo_coord_x = 0.0;
+var geo_coord_y = 0.0;
 const mapPlaceSrc = "https://www.google.com/maps/embed/v1/place?key=AIzaSyAndD7qZMcCCGLyxGzzHsT1udRD6Y-sYHA";
+const geoLocation = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAndD7qZMcCCGLyxGzzHsT1udRD6Y-sYHA";
 
 window.onload = function () {
-    const searchBtn = document.getElementById("search-btn");
-    searchBtn.addEventListener("click", requestShelters);
+  requestShelters();
+  const searchBtn = document.getElementById("search-btn");
+  searchBtn.addEventListener("click", requestCoordinates);
 };
 
 function requestShelters() {
-
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'http://127.0.0.1:5000/shelter', true);
 
@@ -55,6 +29,34 @@ function requestShelters() {
             beds: shelter.beds
           }
         });
+      } else {
+        console.log('Error connecting to server!');
+      }
+    }
+  };
+
+  xhr.send();
+}
+
+function requestCoordinates() {
+  const shelterInput = document.getElementById("location-search");
+  const address = shelterInput.value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', geoLocation + "&address=" + address, true);
+
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        console.log('Sort shelters here');
+        result = JSON.parse(this.responseText);
+        if (result.status !== 'OK') {
+          console.log(result);
+        } else {
+          geo_coord_x = result.results[0].geometry.location.lat;
+          geo_coord_y = result.results[0].geometry.location.lng;
+        }
+
         showAllShelters();
       } else {
         console.log('Error connecting to server!');
