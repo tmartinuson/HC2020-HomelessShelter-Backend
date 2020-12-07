@@ -11,6 +11,19 @@
   <title>Homeless Shelter Finder</title>
 </head>
 
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:5000/shelter', true);
+
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+
+  xhr.send();
+</script>
+
 <body>
   <header class="container nav-bar">
     <nav>
