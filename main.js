@@ -29,10 +29,14 @@ var shelterList = [
   }
 
 ];
-const searchBtn = document.getElementById("search-btn");
-const shelterInput = document.getElementById("location-search");
-const resultText = document.getElementById("no-result");
+const mapPlaceSrc = "https://www.google.com/maps/embed/v1/place?key=AIzaSyAndD7qZMcCCGLyxGzzHsT1udRD6Y-sYHA";
 
+window.onload = function () {
+    const searchBtn = document.getElementById("search-btn");
+    searchBtn.addEventListener("click", showShelter);
+
+    requestShelters();
+};
 
 function requestShelters() {
 
@@ -63,9 +67,17 @@ function requestShelters() {
 }
 
 function showAllShelters() {
-  console.log("it works")
   const bannerHandle = document.getElementById("banner");
   bannerHandle.classList.add("banner-disappear")
+
+  // update google map
+  if (shelterList.length > 0) {
+    const map = document.getElementById("embedded-map");
+    const addressQuery1 = shelterList[0].addressline1.split(' ').join('+');
+    const addressQuery2 = shelterList[0].addressline2.split(' ').join('+');
+    map.setAttribute("src", mapPlaceSrc + "&q=" + addressQuery1 + '+' + addressQuery2);
+  }
+
   const shelterUl = document.getElementById("shelter-list");
   shelterUl.innerHTML = "";
   for (let i = 0; i < shelterList.length; i++) {
@@ -101,6 +113,9 @@ function showAllShelters() {
 }
 
 function showShelter() {
+  const shelterInput = document.getElementById("location-search");
+  const resultText = document.getElementById("no-result");
+
   const searchName = shelterInput.value;
   // const bannerHandle = document.getElementById("banner");
   // bannerHandle.classList.add("banner-disappear")
@@ -145,7 +160,3 @@ function showShelter() {
     }
   }
 }
-
-searchBtn.addEventListener("click", showAllShelters)
-
-requestShelters();
