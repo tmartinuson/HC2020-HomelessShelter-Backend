@@ -51,7 +51,8 @@ function requestShelters() {
             addressline2: shelter.address_line_2,
             postcode: shelter.post_code,
             phone: shelter.phone,
-            email: shelter.email
+            email: shelter.email,
+            beds: shelter.beds
           }
         });
         showAllShelters();
@@ -92,6 +93,7 @@ function showAllShelters() {
     const shelterPos = document.createElement("li");
     const shelterPh = document.createElement("li");
     const shelterEm = document.createElement("li");
+    const shelterBeds = document.createElement("li")
 
     shelterNm.innerText = shelterList[i].name;
     shelterAddr1.innerText = shelterList[i].addressline1;
@@ -99,6 +101,7 @@ function showAllShelters() {
     shelterPos.innerText = shelterList[i].postcode;
     shelterPh.innerText = shelterList[i].phone;
     shelterEm.innerText = shelterList[i].email;
+    shelterBeds.innerText = shelterList[i].beds;
 
     shelterInfoList.appendChild(shelterNm);
     shelterInfoList.appendChild(shelterAddr1);
@@ -106,6 +109,7 @@ function showAllShelters() {
     shelterInfoList.appendChild(shelterPos);
     shelterInfoList.appendChild(shelterPh);
     shelterInfoList.appendChild(shelterEm);
+    shelterInfoList.appendChild(shelterBeds);
 
     shelterInfo.appendChild(shelterInfoList);
     shelterUl.appendChild(shelterInfo);
