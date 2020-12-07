@@ -19,7 +19,7 @@ def add_shelter():
         except ShelterAlreadyExistsError:
             return json.dumps({'error': 'Shelter ' + name + ' already exists'})
 
-    return json.dumps('Shelter ' + name + ' added, thank you for using the app.')
+    return json.dumps({'message': 'Shelter ' + name + ' added, thank you for using the app.'})
 
 
 @app.route('/shelter/<name>',  methods=['GET'])
@@ -27,7 +27,7 @@ def fetch_shelter(name):
     with ShelterData() as data:
         shelter = data.get(name)
 
-    return 'Shelter information: ' + shelter.to_string()
+    return json.dumps(shelter.to_dict())
 
 
 @app.route('/shelter',  methods=['GET'])
@@ -49,4 +49,4 @@ def update_shelter(name):
     with ShelterData() as data:
         data.update(name, num_beds)
 
-    return 'Shelter updated'
+    return json.dumps({'message': 'Shelter updated'})
