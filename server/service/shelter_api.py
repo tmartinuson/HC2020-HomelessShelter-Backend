@@ -8,14 +8,19 @@ from server.service.shelter_data import ShelterData, ShelterAlreadyExistsError, 
 @app.route('/shelter',  methods=['POST'])
 def add_shelter():
     name = request.form['name']
-    address = request.form['address']
+    address_line_1 = request.form['address_line_1']
+    address_line_2 = request.form['address_line_2']
     coordinate_x = request.form['coordinate_x']
     coordinate_y = request.form['coordinate_y']
     num_beds = request.form['num_beds']
+    post_code = request.form['post_code']
+    phone = request.form['phone']
+    email = request.form['email']
 
     with ShelterData() as data:
         try:
-            data.create(name, address, num_beds, coordinate_y, coordinate_x)
+            data.create(name, address_line_1, address_line_2, num_beds, coordinate_y
+                        , coordinate_x, post_code, phone, email)
         except ShelterAlreadyExistsError:
             return json.dumps({'error': 'Shelter ' + name + ' already exists'})
 

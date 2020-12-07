@@ -12,7 +12,8 @@ class ShelterNotFoundError(Exception):
 
 class ShelterData(Base):
 
-    def create(self, name, address, num_beds, coordinate_x, coordinate_y):
+    def create(self, name, address_line_1, address_line_2, num_beds,
+               coordinate_x, coordinate_y, post_code, phone, email):
         shelter = self.session.query(Shelter).filter(
             Shelter.name == name).first()
         if shelter:
@@ -20,10 +21,14 @@ class ShelterData(Base):
 
         shelter = Shelter()
         shelter.name = name
-        shelter.address = address
+        shelter.address_line_1 = address_line_1
+        shelter.address_line_2 = address_line_2
         shelter.num_beds = num_beds
         shelter.coordinate_x = coordinate_x
         shelter.coordinate_y = coordinate_y
+        shelter.post_code = post_code
+        shelter.phone = phone
+        shelter.email = email
 
         self.session.add(shelter)
 
