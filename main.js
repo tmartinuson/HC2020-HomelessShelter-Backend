@@ -74,7 +74,7 @@ function showShelter() {
 
         } else {
 
-            noResult.innerText = "There is no shelter nearby";
+            resultText.innerText = "There is no shelter nearby";
             shelterInput.innerText = "";
             
         }
