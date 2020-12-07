@@ -33,9 +33,7 @@ const mapPlaceSrc = "https://www.google.com/maps/embed/v1/place?key=AIzaSyAndD7q
 
 window.onload = function () {
     const searchBtn = document.getElementById("search-btn");
-    searchBtn.addEventListener("click", showShelter);
-
-    requestShelters();
+    searchBtn.addEventListener("click", requestShelters);
 };
 
 function requestShelters() {
@@ -73,6 +71,8 @@ function showAllShelters() {
   // update google map
   if (shelterList.length > 0) {
     const map = document.getElementById("embedded-map");
+    map.removeAttribute("hidden");
+
     const addressQuery1 = shelterList[0].addressline1.split(' ').join('+');
     const addressQuery2 = shelterList[0].addressline2.split(' ').join('+');
     map.setAttribute("src", mapPlaceSrc + "&q=" + addressQuery1 + '+' + addressQuery2);
