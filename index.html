@@ -11,6 +11,19 @@
   <title>Homeless Shelter Finder</title>
 </head>
 
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://127.0.0.1:5000/shelter', true);
+
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+
+  xhr.send();
+</script>
+
 <body>
   <header class="container nav-bar">
     <nav>
@@ -45,10 +58,19 @@
 
   <section class="banner">Banner image will go here</section>
 
+<<<<<<< HEAD
   <section class="search-results">
     <div id = "no-result"></div>
     <ul class="shelter-list" id="shelter-list">
     </ul>
+=======
+      <div class="map">
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=11&center=49.2827%2C-123.1207&key=AIzaSyB_N_iREtggW3syrVzoUtAUhRKRU2rHsLs" allowfullscreen></iframe>
+      </div>
+    </section>
+
+  </header>
+>>>>>>> d2f88e59c7e9bba7d3331ec4f6d23761d84e724a
 
     <div class="map">
       Insert Map Here
