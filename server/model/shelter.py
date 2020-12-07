@@ -22,4 +22,10 @@ class Shelter(Base):
                                             self.coordinate_x, self.coordinate_y, self.num_beds)
 
     def to_dict(self):
-        return [self.name, self.address, self.coordinate_x, self.coordinate_y, self.num_beds]
+        return {
+            'name': self.name,
+            'address': self.address,
+            'coordinate_x': self.coordinate_x,
+            'coordinate_y': self.coordinate_y,
+            'num_beds': self.num_beds,
+        }
