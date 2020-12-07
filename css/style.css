@@ -78,5 +78,19 @@ li{
     display: inline-block;
 } 
 
+footer{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: lightslategray;
+}
+
+.admin-link{
+    display: block;
+    color: white;
+}
+
  
 
