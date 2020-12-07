@@ -32,4 +32,9 @@ def fetch_list_shelter():
 
 @app.route('/shelter/<name>',  methods=['PUT'])
 def update_shelter(name):
-    return 'todo'
+    num_beds = request.form['num_beds']
+
+    with ShelterData() as data:
+        data.update(name, num_beds)
+
+    return 'Shelter updated'
