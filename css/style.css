@@ -52,6 +52,11 @@ header{
     max-width: 100%;
 }
 
+.banner-disappear {
+    display: none;
+    height: 0;
+}
+
 input[type=search]{
     min-width: 200px;
 }

@@ -1,0 +1,9 @@
+- name: Shelter1
+  address_line_1: Address Line 1
+  address_line_2: Address line 2 (like Vancouver, BC)
+  post_code: A1A 1A1
+  phone: (123) 456-7890
+  email: a@a.com
+  coordinate_x: 123
+  coordinate_y: 321
+  num_beds: 10
