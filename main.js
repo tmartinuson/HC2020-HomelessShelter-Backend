@@ -35,6 +35,7 @@ const resultText = document.getElementById("no-result");
 
 
 function requestShelters() {
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'http://127.0.0.1:5000/shelter', true);
 
@@ -62,6 +63,7 @@ function requestShelters() {
 }
 
 function showAllShelters() {
+  console.log("it works")
   const shelterUl = document.getElementById("shelter-list");
   shelterUl.innerHTML = "";
   for (let i = 0; i < shelterList.length; i++) {
@@ -142,6 +144,6 @@ function showShelter() {
   }
 }
 
-searchBtn.addEventListener("click", showShelter)
+searchBtn.addEventListener("click", showAllShelters)
 
 requestShelters();
